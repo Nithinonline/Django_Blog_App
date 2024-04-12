@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone 
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -14,3 +15,5 @@ class Post(models.Model):
         return self.title
         
     
+    def get_absolute_url(self):                                               #self is refferring to model
+        return reverse('post-details',kwargs={'pk':self.pk})
